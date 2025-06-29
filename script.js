@@ -6,6 +6,7 @@ fetch("https://script.google.com/macros/s/AKfycbxg4v5rhtDbAkJCrM0YoYY6iQw-ANYkJ4
     allData = data;
     populateTable(data);
     populateFilter(data);
+    checkLowStock(data);
   });
 
 function getStockClass(stock) {
@@ -51,3 +52,11 @@ function filterTable() {
   );
   populateTable(filteredData);
 }
+
+function checkLowStock(data) {
+  const alerts = data.filter(item => parseInt(item.stock) <= 5 && parseInt(item.stock) > 0);
+  if (alerts.length > 0) {
+    alert(`⚠️ Attention : ${alerts.length} produits ont un stock faible !`);
+  }
+}
+
