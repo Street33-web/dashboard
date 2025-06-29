@@ -2,34 +2,48 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard - Tarifs & Stock</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+  <title>Tarifs & Stock</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f0f0f0; }
+    h1 { text-align: center; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; background: #fff; }
+    th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+    th { background-color: #f8c24a; }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>📊 Tarifs & Stock</h1>
+  <h1>📋 Tarifs & Stock</h1>
+  <div id="contenu">Chargement en cours...</div>
 
-    <div class="filters">
-      <input type="text" id="searchInput" placeholder="🔎 Rechercher un produit..." onkeyup="filterTable()">
-      <select id="categoryFilter" onchange="filterTable()">
-        <option value="">📁 Toutes les catégories</option>
-      </select>
-    </div>
+  <script>
+    fetch("https://script.google.com/macros/s/AKfycby-nyqzbmp1o50ieqLQGKKmiZXIGN1PoXyK2GN_f9VFLBJT_lxASdr562bEwkJUuK3v/exec")
+      .then(response => response.json())
+      .then(data => {
+        if (!Array.isArray(data) || data.length === 0) {
+          document.getElementById("contenu").innerText = "Aucune donnée trouvée.";
+          return;
+        }
 
-    <table id="prixTable">
-      <thead>
-        <tr>
-          <th>Produit</th>
-          <th>Catégorie</th>
-          <th>Prix (€)</th>
-          <th>Stock</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
+        let html = `<table><thead><tr>
+          <th>Produit</th><th>Catégorie</th><th>Prix (€)</th><th>Stock</th>
+        </tr></thead><tbody>`;
 
-  <script src="script.js"></script>
+        data.forEach(item => {
+          html += `<tr>
+            <td>${item.nom}</td>
+            <td>${item.categorie}</td>
+            <td>${item.prix}</td>
+            <td>${item.stock}</td>
+          </tr>`;
+        });
+
+        html += "</tbody></table>";
+        document.getElementById("contenu").innerHTML = html;
+      })
+      .catch(error => {
+        console.error("Erreur :", error);
+        document.getElementById("contenu").innerText = "Erreur de chargement.";
+      });
+  </script>
 </body>
 </html>
