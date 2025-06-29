@@ -1,6 +1,6 @@
 let allData = [];
 
-fetch("https://script.google.com/macros/s/AKfycbyMoby5LP1mgblkBcBcs7hX4mTp3uDi5IwgZfg2QdR6TV6WX0djvZBUNWBiui05OAmAiA/exec")
+fetch("https://script.google.com/macros/s/AKfycbxg4v5rhtDbAkJCrM0YoYY6iQw-ANYkJ4PjvQyvyRMub_zxLJT7gimzmW-wKHBUajWg/exec")
   .then(response => response.json())
   .then(data => {
     allData = data;
