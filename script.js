@@ -60,3 +60,5 @@ function checkLowStock(data) {
   }
 }
 
+console.log("Réponse reçue :", data);
+
