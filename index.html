@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Tarifs & Stock</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>📊 Tarifs & Stock</h1>
+
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="🔎 Rechercher un produit..." onkeyup="filterTable()">
+      <select id="categoryFilter" onchange="filterTable()">
+        <option value="">📁 Toutes les catégories</option>
+      </select>
+    </div>
+
+    <table id="prixTable">
+      <thead>
+        <tr>
+          <th>Produit</th>
+          <th>Catégorie</th>
+          <th>Prix (€)</th>
+          <th>Stock</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

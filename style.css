@@ -1,0 +1,97 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f6fa;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filters input,
+.filters select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-width: 250px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+th {
+  background-color: #f8c24a;
+  color: #333;
+}
+
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+.stock-ok { color: green; font-weight: bold; }
+.stock-low { color: orange; font-weight: bold; }
+.stock-zero { color: red; font-weight: bold; }
+
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead { display: none; }
+
+  tr {
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+
+  td {
+    position: relative;
+    padding-left: 50%;
+    border: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  td::before {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 45%;
+    font-weight: bold;
+  }
+
+  td:nth-child(1)::before { content: "Produit"; }
+  td:nth-child(2)::before { content: "Catégorie"; }
+  td:nth-child(3)::before { content: "Prix (€)"; }
+  td:nth-child(4)::before { content: "Stock"; }
+}
